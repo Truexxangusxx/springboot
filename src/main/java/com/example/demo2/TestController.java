@@ -6,16 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.h2.util.json.JSONArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.example.demo2.Coin;
 import com.example.demo2.result;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @RestController
 public class TestController {
@@ -24,6 +25,8 @@ public class TestController {
 	@Autowired
 	private JdbcTemplate jdbc;
 	
+	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/list")
 	public List<Coin> index() {
 		
@@ -32,6 +35,7 @@ public class TestController {
 	      });
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/change/{idInput}/{mount}/{idOutput}")
 	public result index(@PathVariable("idInput") String idInput, 
 			@PathVariable("mount") String mount, 
